@@ -62,7 +62,10 @@ def get_user_agent():
 def get_graph(listing_endpoint):
     logger = logging.getLogger('GraphDataCore')
     graph_data = dict()
-    listing_resp = get(base_url + listing_endpoint, headers=ef_headers, timeout=10)
+    if use_proxy:
+        listing_resp = get(base_url + listing_endpoint, headers=ef_headers, timeout=10, proxies=conn_pro)
+    else:
+        listing_resp = get(base_url + listing_endpoint, headers=ef_headers, timeout=10)
     if listing_resp.status_code == 200:
         listing_soup = BeautifulSoup(listing_resp.content.decode('utf-8'), 'html.parser')
         description = ''
@@ -204,7 +207,10 @@ ef_headers = {'user-agent': get_user_agent()}
 index_url = base_url + index_endpoint
 results_list = list()
 
-home_resp = get(index_url, headers=ef_headers)
+if use_proxy:
+    home_resp = get(index_url, headers=ef_headers, proxies=conn_pro)
+else:
+    home_resp = get(index_url, headers=ef_headers)
 now = datetime.now()
 if home_resp.status_code == 200:
     rootLogger.info('+++++++++++++++ Page: Index +++++++++++++++')
@@ -216,7 +222,10 @@ for page_no in range(10):
     rootLogger.info(f'+++++++++++++++ Page: {page_no + 1} +++++++++++++++')
     page_url = f'https://empireflippers.com/wp-content/uploads/alm-cache/marketplace_load_more/page-{page_no + 1}' \
                f'.html'
-    page_resp = get(page_url, headers=ef_headers)
+    if use_proxy:
+        page_resp = get(page_url, headers=ef_headers, proxies=conn_pro)
+    else:
+        page_resp = get(page_url, headers=ef_headers)
     if page_resp.status_code == 200:
         page_soup = BeautifulSoup(page_resp.content.decode('utf-8'), 'html.parser')
     elif page_resp.status_code == 404:
@@ -226,7 +235,10 @@ for page_no in range(10):
                             f'page=15&page={page_no}&offset=10&post_type=post&repeater=template_4&seo_start_page=' \
                             '1&preloaded=false&preloaded_amount=0&cache_id=marketplace_load_more&cache_logged_in' \
                             '=false&order=DESC&orderby=date&action=alm_get_posts&query_type=standard'
-        alt_page_resp = get(alt_page_endpoint, headers=ef_headers)
+        if use_proxy:
+            alt_page_resp = get(alt_page_endpoint, headers=ef_headers, proxies=conn_pro)
+        else:
+            alt_page_resp = get(alt_page_endpoint, headers=ef_headers)
         if alt_page_resp.status_code == 200:
             page_soup = BeautifulSoup(alt_page_resp.json()['html'], 'html.parser')
         else:

@@ -9,7 +9,7 @@ Scrape empireflippers.com, implement the use of proxies and get all the data in 
 ## Proxies
 The script allows configuring a proxy with the provided configurations 
 ### Set proxy 
-You can set a proxy by populating values given to you by your proxy provider 
+You can set a proxy by entering the appropriate proxy username, password, url and port that is provided by your proxy provider. These are standard and a prt of every proxy service no matter who is supplying it.
 
 
 ![Proxy config](./readme_images/proxy_config.png)

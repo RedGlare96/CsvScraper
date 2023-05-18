@@ -149,10 +149,10 @@ try:
     config.read('scraperconfig.ini')
     pages = int(config['search']['pages'])
     use_proxy = config.getboolean('proxy', 'use_proxy')
-    p_user = config['proxy']['p_user']
-    p_pass = config['proxy']['p_pass']
-    p_host = config['proxy']['p_host']
-    port = config['proxy']['p_port']
+    p_user = config['proxy']['proxy_user']
+    p_pass = config['proxy']['proxy_pass']
+    p_host = config['proxy']['proxy_host']
+    port = config['proxy']['proxy_port']
 except Exception as exc:
     print('Cannot read config. Getting data from cmd only')
     print(f'Details: {str(exc)}')

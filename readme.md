@@ -26,7 +26,7 @@ Studying the site on the Firefox/Chromium webconsole, you notice clicking the 'l
 
 ![lm event](./readme_images/lm_event.png)
 
-The urls it uses is in a pattern with a page number in the url. The response from the url looks like this
+The urls it uses is in a pattern with a page number in it which can be easily incremented for each page. The response from the url looks like this
 
 ![lm response](./readme_images/lm_response.png)
 

@@ -1,7 +1,7 @@
 # Fast Scraper
 Scrapes Empire Flippers for listing data and saves data as csv.
 
-This script is a demonstation of drastically reducing scraping times with careful observation of how the site works and avoiding Selenium automation entirely.
+This script is a demonstration of drastically reducing scraping times with careful observation of how the site works and avoiding Selenium automation entirely.
 
 # Problem Statement
 Scrape empireflippers.com, implement the use of proxies and get all the data in the page, including listings that appear only after clicking a 'load more' button.
@@ -19,7 +19,7 @@ The config values are implemted this way
 ![Proxy implementation](./readme_images/proxy_implement.png)
 
 ## Avoiding Selenium
-Some sites only check the user agent for compatibility and can threfore be exploited to connect to websites without automating a browser by explcitly setting a valid user agent on the headers. This method will not work for sites with a higher level of security.
+Some sites only check the user agent for compatibility and can therefore be exploited to connect to websites without automating a browser by explicitly setting a valid user agent on the headers. This method will not work for sites with a higher level of security.
 
 ## Dealing with 'load more' buttons
 Studying the site on the Firefox/Chromium webconsole, you notice clicking the 'load more' button triggers an Ajax event that sends a request to a separate url
